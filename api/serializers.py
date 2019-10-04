@@ -9,7 +9,7 @@ class todoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.todofeed
-        fields = ('id', 'title', 'body', 'created_on', 'user')
+        fields = ('id', 'item', 'status', 'user')
 
 
 class userSerializer(serializers.ModelSerializer):
