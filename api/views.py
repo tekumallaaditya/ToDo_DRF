@@ -24,6 +24,17 @@ class todoViewSet(viewsets.ModelViewSet):
         response = {'message': 'todos of the user', 'result': serializer.data}
         return Response(serializer.data, status= status.HTTP_200_OK )
 
+    def create(self, request,*args, **kwargs):
+        user_id = request.user
+        print('in create method and user : {} and data is: {}'.format(user_id, request.data))
+        res = request.data
+        res['user'] = user_id.id
+        print('res -->>>> {}'.format(res))
+        serializer = serializers.todoSerializer(data=res)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status= status.HTTP_200_OK )
+
 
 class userViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.userSerializer
