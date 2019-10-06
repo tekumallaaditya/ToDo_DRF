@@ -39,4 +39,4 @@ class todoViewSet(viewsets.ModelViewSet):
 class userViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.userSerializer
     queryset = User.objects.all()
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
